@@ -250,9 +250,11 @@ Tell the user:
 Tell the user:
 > 次のステップ:
 > - **今すぐ使う**: 「今日のツイート作って」で `x-draft` 起動 → 下書き5-10案生成
-> - **API接続**: 「x-connect-apiして」 → X Developer API申請・接続ガイド
 > - **brand-voiceを育てる**: 「x-interviewで深めたい」（いつでも）
-> - **API接続後の深い更新**: `x-refresh-brand-voice`
+> - **分析・自動化まで本気でやりたい**: 「x-connect-apiして」で X Developer API接続（Basic $200/月が必要。詳細は接続スキルで案内）
+> - **自動化セットアップ**: 「朝までに下書き作っておいて」で x-schedule が走る
+>
+> 💡 **API接続について:** 下書き生成だけなら不要。投稿分析・トレンド分析・自動化が欲しい時に検討してください。
 
 ## Analysis Heuristics
 

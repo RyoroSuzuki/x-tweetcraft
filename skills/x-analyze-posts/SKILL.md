@@ -7,7 +7,18 @@ description: Deeply analyze the user's past X posts to surface engagement patter
 
 Conduct deep, standalone analysis of the user's X posts. This is the L2 (分析・学習) skill in x-tweetcraft's 3-layer architecture. Unlike `x-draft` which does light-touch analysis inline, this skill produces a thorough report and actionable insights.
 
+**⚠️ MCP server status:** x-tweetcraft MCP server is planned (P1) but not yet implemented. When MCP is unavailable, this skill falls back to "paste mode" (user supplies tweet data manually). See Step 1 for the detection logic.
+
 ## Workflow
+
+### Step 0: Load brand-voice context
+
+Search for `brand-voice.md` in this order (unified across all x-tweetcraft skills):
+1. `./brand-voice.md` (current working directory)
+2. `./ceo/x-automation/brand-voice.md` (VITAL Z convention)
+3. `~/brand-voice.md` (user home)
+
+Read brand-voice.md + `personal-info/public-voice.md` (for patterns, themes, NG items). This context informs pattern classification in Step 4.
 
 ### Step 1: Check X API availability
 

@@ -6,6 +6,8 @@ description: Weekly X (Twitter) content strategist. Runs a structured review com
 
 An autonomous agent that takes a strategic view of the user's X content operation. Combines past-post performance analysis (L2), market trend research (L3), and the user's brand voice into actionable weekly strategy.
 
+**⚠️ MCP server status:** x-tweetcraft MCP server is planned (P1) but not yet implemented. When unavailable, this agent falls back to qualitative review using brand-voice.md + recent draft-logs + user-provided data. See Phase 2 and 3 for fallbacks.
+
 ## When to Activate
 
 This agent is dispatched when the user wants:

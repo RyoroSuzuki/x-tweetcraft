@@ -1,143 +1,108 @@
 ---
 name: x-connect-api
-description: Guide the user through X (Twitter) Developer API application, authentication, and connection. Use when the user says "x-connect-apiして", "X API接続したい", "Developer API申請したい", "API繋ぎたい", "x-post使いたい", or when skills report that X API is not available and the user wants to enable it. Walks through portal application, app creation, credential retrieval, .env setup, and connection test. Enables x-post, x-refresh-brand-voice, and API-enhanced x-draft.
+description: Guide the user through X (Twitter) Developer API application, authentication, and connection. Use when the user says "x-connect-apiして", "X API接続したい", "Developer API申請したい", "API繋ぎたい", "x-post使いたい", "API料金知りたい", or when skills report that X API is not available and the user wants to enable it. Walks through portal application, app creation, credential retrieval, .env setup, and connection test with detailed cost expectations upfront. Most suitable for non-developer users (business owners, content creators).
 ---
 
 # x-connect-api
 
-Walk the user through connecting X Developer API to x-tweetcraft, from application to working connection. This unlocks x-post (auto-posting), x-refresh-brand-voice (deep analytics), and API-enhanced x-draft.
+Walk the user through connecting X Developer API. x-tweetcraft's real power (L2分析, L3トレンド, 週次戦略, 自動投稿) requires this connection. Without it, only L1 (draft generation) works.
+
+**Target user:** Non-developers. Assume zero familiarity with APIs, tokens, or Developer portals.
 
 ## Workflow
 
-### Step 1: Check current state
+### Step 1: Explain value and cost upfront (重要)
+
+Before starting the application, set accurate expectations. Tell the user:
+
+> X API接続は **x-tweetcraftの真価を発揮するため必須** です。ただし料金がかかります。
+>
+> **料金の概算:**
+> - **Free プラン ($0)**: 自動投稿のみ。分析・トレンド機能は実質使えない
+> - **Basic プラン ($200/月 ≈ 30,000円)**: すべての機能が動く。**本格運用ならこちら**
+>
+> **なぜお金が必要？**
+> X社が2023年以降、APIを有料化しました。無料枠は月100投稿の取得しかできず、分析や検索には使えません。
+>
+> 詳細はここに: `${CLAUDE_PLUGIN_ROOT}/skills/x-connect-api/references/api-plans-and-costs.md`
+> （あなたの運用ケース別コスト目安も書いてます）
+>
+> **最初のおすすめ:** まず Free で申請して動作確認 → 必要を感じたら Basic にアップグレード
+>
+> 続けますか？
+
+**If user wants more cost info:** Read `references/api-plans-and-costs.md` and present relevant sections.
+
+**If user hesitates:** Remind them x-tweetcraft still works without API (L1生成のみ)。急がなくてOK。
+
+### Step 2: Check current state
 
 Ask the user where they are:
-> X Developer APIの接続を始めます。現在の状況を教えてください:
+> 現在の状況を教えてください:
 >
 > A) まだ何もしていない（Developer Portalアカウント未作成）
 > B) Developer Portalは登録済み、App未作成
-> C) App作成済み、認証情報（API Keys / Tokens）取得済み
+> C) App作成済み、認証情報取得済み
 > D) 認証情報を .env に設定済み、接続テストをしたい
 
-### Step 2: Handle each starting point
+### Step 3: Guide based on starting point
 
-#### A) まだ何もしていない
+**For detailed step-by-step walkthrough**, read `references/detailed-setup-guide.md` and follow the relevant sections:
+- A → Start from Step 1 of the guide
+- B → Jump to Step 3 of the guide
+- C → Jump to Step 5 of the guide
+- D → Jump to Step 6 of the guide
 
-Guide through the application:
+The detailed guide covers:
+- Exact portal navigation
+- Application text template (English)
+- App permissions configuration (Read and write)
+- ⚠️ Access Token regeneration after permission changes
+- Secure credential storage (~/.x-tweetcraft.env)
+- Common errors and fixes
 
-> **X Developer Portal 申請手順:**
+**When reading references**, adapt the content to user's specific situation. Don't dump the whole file into chat — guide conversationally.
+
+### Step 4: Application text (if at Step A)
+
+**If the user has a pre-drafted application text** (e.g., `ceo/x-automation/X_API_APPLICATION.md` for VITAL Z users), read it and offer to use that.
+
+**Otherwise**, provide the generic template from the detailed guide and customize with the user's specifics (use case, target audience from brand-voice.md if available).
+
+### Step 5: Security reminder
+
+Always remind before credential handling:
+
+> ⚠️ **絶対にやってはいけないこと:**
+> - APIキーをGitリポジトリにコミットしない
+> - APIキーをチャット（ChatGPT/Claude.ai等）に貼らない
+> - APIキーをSlackや公開チャンネルに書かない
+> - スクリーンショットを撮らない
 >
-> 1. https://developer.x.com/ にアクセス
-> 2. Xアカウントでログイン（自動投稿したいアカウントでログイン）
-> 3. 「Sign up for Free Account」をクリック（Freeプランで十分）
-> 4. 用途説明欄に以下のテキストをコピペしてください:
+> 保存先: `~/.x-tweetcraft.env`（ホーム直下、リポジトリ外）
+> バックアップ: パスワードマネージャー推奨
 
-Provide the application text. **Customize based on the user's actual use case** — pull relevant info from brand-voice.md / personal-info/.
+### Step 6: Connection test (Step D)
 
-Example text template:
-```
-I am building a personal productivity tool to semi-automate my own X posting workflow.
+When credentials are ready:
 
-The tool analyzes my own past tweets to identify writing patterns and themes that resonate with my audience, then helps me generate draft posts based on my brand voice. I review and edit each draft before posting.
+**If x-tweetcraft MCP server is implemented (P1):**
+Invoke a simple API call via MCP to verify connection (e.g., get user profile).
 
-Specifically, I will use the API to:
-1. Post my own tweets to my own account
-2. Retrieve my own past tweets to analyze my writing patterns
-3. Understand which topics perform well with my existing audience
+**If MCP server not yet implemented:**
+Tell the user:
+> 認証情報の設定まで完了しました。
+> MCPサーバーがまだ未実装のため、実際のAPI呼び出しは将来のバージョンで有効化されます。
+> 現時点では .env ファイルを正しい場所に保存した状態で完了扱いとします。
+> 準備は整っているので、x-post や x-analyze-posts が実装され次第すぐ使えます。
 
-This is purely a personal productivity tool — I only access my own account data. No third-party data collection, no automated mass posting. Each post is human-reviewed before publishing.
+### Step 7: Next steps guidance
 
-The tool is a Claude Code (Anthropic's CLI) plugin for personal use.
-```
+Once setup is complete:
 
-**If the user has a specific pre-drafted application text** (e.g., `ceo/x-automation/X_API_APPLICATION.md`), read it and present that instead.
-
-Then tell them:
-> 申請後は承認待ちです（通常1-2営業日、即時承認もあり）。
-> 承認されたら「次のステップに進みたい」と声をかけてください。
-
-Wait for user to proceed.
-
-#### B) Developer Portal登録済み、App未作成
-
-Guide through App creation:
-
-> **App作成手順:**
+> 🎉 X API接続準備完了です！これで以下が使えるようになります:
 >
-> 1. Developer Portal（https://developer.x.com/en/portal/dashboard）にログイン
-> 2. 「Create Project」または「Create App」をクリック
-> 3. App名を入力（例: `x-tweetcraft-yourname`）
-> 4. 「Keys and tokens」タブで以下を取得:
->    - API Key
->    - API Key Secret
->    - Bearer Token
->    - Access Token
->    - Access Token Secret
-> 5. **User authentication settings** で以下を設定:
->    - App permissions: **Read and write**（投稿に必要）
->    - Type of App: **Web App, Automated App or Bot**
->    - Callback URI: `http://localhost:3000/callback` (ダミーでOK)
->    - Website URL: 何でもOK（`https://example.com`）
->
-> 取得したら次のステップへ進みましょう。
-
-Wait for user to confirm they have the credentials.
-
-#### C) 認証情報取得済み
-
-Guide through .env setup:
-
-> **認証情報の保存:**
->
-> 1. 以下の場所に `.env` ファイルを作成してください:
->    `~/.x-tweetcraft.env`
->
->    （プラグインディレクトリではなくホームに置く。git管理から外すため）
->
-> 2. 以下の内容を記入:
->
-> ```
-> X_BEARER_TOKEN=ここにBearer Tokenを貼る
-> X_API_KEY=ここにAPI Keyを貼る
-> X_API_SECRET=ここにAPI Key Secretを貼る
-> X_ACCESS_TOKEN=ここにAccess Tokenを貼る
-> X_ACCESS_TOKEN_SECRET=ここにAccess Token Secretを貼る
-> ```
->
-> 3. パーミッションを制限:
->    `chmod 600 ~/.x-tweetcraft.env`
->
-> ⚠️ **絶対にGitにコミットしない**でください。
-
-Wait for user to confirm.
-
-#### D) 接続テストをしたい
-
-Guide through connection test:
-
-Check if the x-tweetcraft MCP server is configured. Look for `.mcp.json` in the plugin.
-
-If MCP server not yet configured:
-> x-tweetcraft MCPサーバーがまだセットアップされていません。
-> この機能はP1タスクとして別途実装が必要です。
-> 現時点では、APIキーを保存しておいて、MCPサーバー実装後にテストできます。
-
-If MCP server is configured:
-> MCPサーバーの再起動が必要です。
-> Claude Codeを再起動してから、以下を実行してください:
->
-> ```
-> 「x-connect-apiの接続テストして」
-> ```
->
-> → 自分のアカウント情報取得テストが走ります。
-
-### Step 3: Confirm completion and next steps
-
-Once the user confirms setup is complete:
-
-> 🎉 X API接続完了です！これで以下が使えるようになります:
->
+> **今すぐ使えるもの（API依存スキル）:**
 > - `x-analyze-posts` — 過去投稿の深い傾向分析
 > - `x-research-trends` — 市場トレンド研究
 > - `x-content-strategist` — 週次戦略レビュー（agent）
@@ -147,47 +112,42 @@ Once the user confirms setup is complete:
 > - `x-post` — 下書きを直接投稿
 > - `x-refresh-brand-voice` — 過去投稿100件以上を分析してbrand-voice深化
 >
-> まず試してみるなら:
+> まず試すなら:
 > - 「自分の投稿分析して」で `x-analyze-posts` を実行
-> - 「今日のツイート作って」で改善版の下書きを生成
+> - 「今伸びてるツイート調べて」で `x-research-trends` を実行
 
-## Security Notes
+## References
 
-Always remind the user:
-- **Never commit .env to git**
-- **Never share API keys in chat or code**
-- **Store credentials in password manager as backup**
-- **Rotate tokens if exposed**
+- **Detailed setup guide** (non-developer-friendly): `references/detailed-setup-guide.md`
+- **API plans & costs** (pricing analysis): `references/api-plans-and-costs.md`
+
+## Principles
+
+- **Expect zero technical knowledge** — User is likely a business owner/creator, not a developer
+- **Surface costs upfront** — Don't let users discover $200/month pricing after the setup
+- **Emphasize Free→Basic path** — Most users should start Free to validate
+- **Walk through conversationally** — Don't dump reference file contents; guide step-by-step
 
 ## Edge Cases
 
-**User's application was denied:**
-- Ask for the rejection reason
-- Help rewrite the use case description to address concerns
-- X typically wants: clear personal use, human oversight, no spam/bot behavior
+**User's application gets rejected:**
+- Common reasons: vague use case, commercial data mining language, bot-like behavior wording
+- Fix: rewrite with "personal use", "human-reviewed", "own account only"
 
 **User is confused about Project vs App:**
-- Explain: A Project contains Apps. Just create a Project first, then it auto-creates an App.
+- Clarify: Project contains Apps. Create a Project → App auto-generated inside.
 
 **User has multiple X accounts:**
-- Ensure they're logged into the account they want to automate posting FOR
-- The Developer API is tied to the account that creates the App
+- API is tied to the account that creates the App. Log in with the posting target account.
 
-**User wants Basic/Pro plan:**
-- Free plan is enough for MVP (1,500 posts/month, 10K tweet reads/month)
-- Basic ($200/month) needed for: tweet search (search_trending), high-volume reads
-- Help them assess: do they actually need Basic?
+**User hesitates due to cost:**
+- Affirm: x-tweetcraft works without API for L1 (draft generation). No pressure to pay.
 
-**API approved but user can't find keys:**
-- Guide to: Developer Portal → Projects & Apps → [App name] → Keys and tokens tab
-- May need to "Regenerate" if they were shown once and not saved
+**Access Token was generated BEFORE setting Read+Write permissions:**
+- Must regenerate Token. This is the most common pitfall. Explicitly warn.
 
-## Integration with existing assets
+## Integration
 
-**If `ceo/x-automation/X_API_APPLICATION.md` exists** (VITAL Z convention):
-- Read it and use the pre-drafted application text
-- Mention that this saves time
-
-**After successful connection:**
-- Suggest running `x-refresh-brand-voice` immediately to see the quality improvement
-- Update the user's `brand-voice.md` 更新履歴 section with "API connected: YYYY-MM-DD"
+- **Triggered by:** User asking about API, or skills reporting "API unavailable"
+- **Writes:** `~/.x-tweetcraft.env` (user's home, NOT in repo)
+- **Enables:** All L2/L3 skills and agents that depend on X API

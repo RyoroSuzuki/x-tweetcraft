@@ -87,7 +87,7 @@ Generate drafts personalized to the user's voice. Each draft should:
 - Match the tone and style from brand-voice.md
 - Use one of the user's "よく使う型" (patterns)
 - Avoid all NG items
-- Be within 280 characters (X limit)
+- Be within 280 characters (X limit) — **Note: Japanese characters count as 2 each on X, so Japanese tweets should stay within ~140 Japanese characters to be safe**
 
 **Output format for each draft:**
 

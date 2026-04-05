@@ -7,12 +7,18 @@ description: Research current high-performing tweet patterns and formats in the 
 
 Research market trends in tweets relevant to the user's themes, identify winning formats, and translate them into the user's voice. This is the L3 (市場調査) skill in x-tweetcraft's 3-layer architecture.
 
+**⚠️ MCP server status:** x-tweetcraft MCP server is planned (P1) but not yet implemented. When MCP is unavailable, this skill falls back to Claude browser extension / WebSearch / user-provided tweet samples. See Step 2 for method selection.
+
 ## Workflow
 
 ### Step 1: Determine research targets
 
-Read the user's brand-voice to identify target domains:
-- `./brand-voice.md` or `./ceo/x-automation/brand-voice.md`
+Read the user's brand-voice to identify target domains. Search for `brand-voice.md` in this order (unified across all x-tweetcraft skills):
+1. `./brand-voice.md` (current working directory)
+2. `./ceo/x-automation/brand-voice.md` (VITAL Z convention)
+3. `~/brand-voice.md` (user home)
+
+Then read the referenced personal-info files:
 - `personal-info/public-voice.md` (テーマセクション)
 - `personal-info/audience-and-messages.md` (届けたい人)
 
