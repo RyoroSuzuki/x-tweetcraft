@@ -56,6 +56,25 @@ Use Playwright MCP to fetch the public X profile page. Extract bio, follower cou
 **For X API available:**
 Call `get_my_tweets` to retrieve recent tweets programmatically.
 
+### Step 3.5: Ask for additional context materials
+
+Before analyzing, ask the user if they have any other materials about their X operation direction:
+
+> ツイート以外に、X運用の方向性・戦略をまとめたメモや資料はありますか？
+> 例えば：
+> - 発信テーマのメモ
+> - ターゲット読者の定義
+> - 投稿カレンダー・企画書
+> - ブランディング資料
+> - ペルソナ設定資料
+>
+> ファイルパスを教えていただくか、内容をコピペしていただければ、brand-voice.mdに反映します。
+> （なければスキップでOK）
+
+If the user provides file paths, read them. If they paste content, use it. If they skip, proceed with tweets only.
+
+These materials often contain intentional direction that may not be visible in past tweets — the user's "こう発信したい" vs. past "こう発信した". Prioritize intentional direction when conflicts exist.
+
 ### Step 4: Analyze the samples
 
 From the gathered tweets, extract:
