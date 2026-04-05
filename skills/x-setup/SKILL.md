@@ -9,6 +9,38 @@ Generate a personalized `brand-voice.md` file that captures the user's X (Twitte
 
 ## Workflow
 
+### Step 0: Check companion skills (recommended)
+
+Before starting setup, briefly check whether useful companion skills are available. These aren't required, but they make x-auto more powerful.
+
+Look at the available skills list in the current session and identify which are NOT present:
+
+**Strongly recommended:**
+- `document-skills` (pdf, docx, xlsx, pptx readers) — for reading vision docs, brand guidelines, career sheets when building brand-voice
+- `superpowers` (brainstorming, writing-plans, TDD etc.) — for deeper content planning and campaign design
+
+If both are installed, say:
+> ✅ おすすめのCompanion Skillsはすでに揃っています。セットアップを始めます。
+
+If some are missing, tell the user:
+> x-autoと相性のいい **おすすめCompanion Skills** を紹介します。必須ではないですが、入れておくと便利です:
+>
+> **[未インストールのみ列挙]**
+> - `document-skills` → PDF/Word/Excel/PowerPointを読み込めるようになります（職歴書・ブランド資料の分析に便利）
+> - `superpowers` → ブレスト・計画・TDD等の汎用ワークフロー（コンテンツ戦略に活用できます）
+>
+> インストール方法:
+> ```
+> claude plugin install document-skills@anthropic-agent-skills
+> claude plugin install superpowers@claude-plugins-official
+> ```
+>
+> または `npx skills add <skill-name>` でも追加できます。
+>
+> 今すぐ入れなくても x-auto のセットアップは進められます。このまま続けますか？
+
+Wait for user confirmation, then proceed to Step 1.
+
 ### Step 1: Ask for the user's X account
 
 Ask: "あなたのXアカウントを教えてください（URLまたは@ハンドル）"
