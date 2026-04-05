@@ -12,8 +12,8 @@ Conduct a deep personal interview across 6 rounds to surface the user's unique s
 ### Step 1: Check prior session history
 
 Look for existing interview logs at:
-- `ceo/x-automation/personal-info/interview-logs/` (VITAL Z convention)
-- `./personal-info/interview-logs/` (other users)
+- `./personal-info/interview-logs/` (unified model・recommended)
+- `./ceo/x-automation/personal-info/interview-logs/` (VITAL Z convention)
 - `./interview-logs/` (fallback)
 
 **If logs exist:**
@@ -100,8 +100,8 @@ This gives users natural pause points.
 ### Step 6: Save session log
 
 At the end of each session (complete or partial), save a log file using the same path resolution order as Step 1:
-1. `ceo/x-automation/personal-info/interview-logs/` (VITAL Z convention)
-2. `./personal-info/interview-logs/` (other users)
+1. `./personal-info/interview-logs/` (unified model・recommended)
+2. `./ceo/x-automation/personal-info/interview-logs/` (VITAL Z convention)
 3. `./interview-logs/` (fallback)
 
 File name format: `YYYY-MM-DD_round{N}-{M}.md`

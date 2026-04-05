@@ -52,9 +52,14 @@ For each selected template, ask:
 
 For each customized schedule, construct the Claude Code prompt that will run at the scheduled time.
 
-Example prompt for morning draft prep:
+Before generating the cron command, **determine the user's data directory**:
+- Ask the user: "x-tweetcraftのインストールフォルダを教えてください（例: `~/x-tweetcraft`、`~/Documents/x-tweetcraft`）"
+- Record as `PLUGIN_DIR` variable
+- This is both the plugin directory AND where user data lives (unified model)
+
+Example prompt for morning draft prep (with `PLUGIN_DIR=~/x-tweetcraft`):
 ```
-cd <user's working dir> && claude -p "brand-voice.md を読んで、x-analyze-posts と x-research-trends を軽量実行してから x-draft を起動。下書き10案を personal-info/draft-logs/$(date +%Y-%m-%d_%H%M).md に保存して終了。"
+cd ~/x-tweetcraft && claude --plugin-dir . -p "brand-voice.md を読んで、x-analyze-posts と x-research-trends を軽量実行してから x-draft を起動。下書き10案を personal-info/draft-logs/$(date +%Y-%m-%d_%H%M).md に保存して終了。"
 ```
 
 ### Step 5: Create the schedule

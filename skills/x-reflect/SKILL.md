@@ -44,10 +44,10 @@ Ask the user if information is missing:
 
 ### Step 2: Locate learnings.md
 
-Search for `learnings.md` in this order:
-1. `ceo/x-automation/personal-info/learnings.md` (VITAL Z convention)
-2. `./personal-info/learnings.md` (other users)
-3. `./learnings.md` (fallback)
+Search for `learnings.md` in this order (unified with brand-voice path resolution):
+1. `./personal-info/learnings.md` (unified model・recommended)
+2. `./ceo/x-automation/personal-info/learnings.md` (VITAL Z convention)
+3. `~/personal-info/learnings.md` (user home fallback)
 
 **If not found:** Create a new file at the most appropriate location (matching where brand-voice.md is).
 
