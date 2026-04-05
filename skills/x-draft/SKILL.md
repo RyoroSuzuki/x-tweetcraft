@@ -113,8 +113,11 @@ At the bottom, if API not connected, add:
 End with:
 > 気に入った案はありますか？修正したい部分があれば「3番をもっとカジュアルに」のように指示してください。投稿するなら `x-post` スキルが使えます。
 >
-> 💎 **下書きの深みが足りないと感じたら:**
-> 「x-interviewで深めたい」と声をかけてください。パーソナライズ精度を上げるインタビューを再開/追加できます。
+> 💎 **精度をさらに上げたい時:**
+> - 「x-interviewで深めたい」 → brand-voiceをもっとパーソナライズ
+> - 「自分の投稿分析して」 → `x-analyze-posts` で深い傾向分析（API接続後）
+> - 「今伸びてるツイート調べて」 → `x-research-trends` で市場研究（API推奨）
+> - 「今週の戦略立てて」 → `x-content-strategist` agent で週次戦略レビュー
 
 ## Quality Checklist
 
