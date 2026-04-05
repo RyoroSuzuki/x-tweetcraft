@@ -23,11 +23,17 @@ Read `brand-voice.md` (the index file). It contains the quick summary and refere
 - `personal-info/values-and-origin.md` — 価値観・原体験・キャリア（Private）
 - `personal-info/audience-and-messages.md` — 届けたい人・コアメッセージ（Private）
 
+**Also check for `personal-info/learnings.md`** — if it exists, read it to incorporate prior x-reflect sessions' learnings:
+- 強い好みパターン → 優先的に生成に反映
+- 強い拒否パターン → 避ける
+- 修正癖 → 生成時に初めから反映
+
 **Read ALL referenced files** (not just brand-voice.md index). The public files guide output style; the private files inform voice, perspective, and motivation — but their content MUST NOT be directly quoted in tweets.
 
 Internalize:
 - Public: tone, themes, patterns, NG items, 3-step structure
 - Private: values, origin story, target audience, core messages (as internal context only)
+- Learnings: accumulated user preferences from prior sessions (strong signal)
 
 ### Step 2: Check X API availability
 
@@ -113,11 +119,21 @@ At the bottom, if API not connected, add:
 End with:
 > 気に入った案はありますか？修正したい部分があれば「3番をもっとカジュアルに」のように指示してください。投稿するなら `x-post` スキル（計画中・API接続後に実装予定）が使えます。
 >
+> 💡 **選んだ後にフィードバック教えてもらえると、次回もっとあなたらしく書けるようになります。**
+> （例: 「3番を採用。ただし○○の部分を△△に変えた」「7番は好き、ただ文末を柔らかくしたい」）
+> これをもとに `x-reflect` が自動でlearningsに記録して、分身が賢くなります。
+>
 > 💎 **精度をさらに上げたい時:**
 > - 「x-interviewで深めたい」 → brand-voiceをもっとパーソナライズ
 > - 「自分の投稿分析して」 → `x-analyze-posts` で深い傾向分析（API接続後）
 > - 「今伸びてるツイート調べて」 → `x-research-trends` で市場研究（API推奨）
 > - 「今週の戦略立てて」 → `x-content-strategist` agent で週次戦略レビュー
+
+### Step 9: Trigger x-reflect on user response
+
+After presenting drafts, when the user responds with their picks/edits/rejections:
+- Invoke the `x-reflect` skill workflow to capture the learnings
+- If the user said "スキップ" or gave no feedback, skip x-reflect invocation
 
 ## Quality Checklist
 
