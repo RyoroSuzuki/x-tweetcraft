@@ -180,9 +180,10 @@ personal-info/
 - Note: "Run `x-interview` to deepen this section"
 
 **Storage location:**
-- Default: Save to the current working directory
+- Default: Save to the current working directory (e.g., `./brand-voice.md` and `./personal-info/`)
+- If Claude Code is launched from within the x-tweetcraft folder, user data will be saved there (alongside skills/, agents/ etc.). This is the recommended setup — one folder for everything. User data files (`brand-voice.md`, `personal-info/`) are gitignored so they don't pollute the plugin repo.
 - For VITAL Z users: `ceo/x-automation/`
-- Ask the user: "brand-voice の保存先はどこにしますか？（デフォルト: `./`）"
+- Ask the user: "brand-voice の保存先はどこにしますか？（デフォルト: `./` = 現在のフォルダ）"
 
 ### Step 6: Present draft for user review
 

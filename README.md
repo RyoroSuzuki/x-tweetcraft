@@ -49,33 +49,26 @@ x-tweetcraftをインストールしたい
 ```
 
 → Claudeが以下を代行します：
-1. **保存先をあなたに確認**（現在の作業フォルダ、ドキュメント、ホーム等から選べます）
+1. **保存先をあなたに確認**（現在のフォルダ、ドキュメント、ホーム等）
 2. GitHubからツール一式をダウンロード
 3. 関連ツール（おすすめのClaude Code公式スキル）のチェックと導入案内
-4. `claude --plugin-dir` コマンドでの起動方法を案内
+4. そのまま使える起動方法を案内
 
-### 方法B: 自分でダウンロードする（ターミナル操作）
+### 方法B: 自分でダウンロード（ターミナル操作）
 
-ターミナルで好きな場所に移動して、git でダウンロードします：
+ターミナルで好きな場所に移動して、ダウンロード → その中に移動して Claude Code 起動：
 
 ```bash
 cd <お好きな場所>        # 例: cd ~/Documents や cd ~/my-projects
 git clone https://github.com/RyoroSuzuki/x-tweetcraft.git
+cd x-tweetcraft
+claude --plugin-dir .
 ```
 
-その後、Claude Code を **プラグインの場所を指定して** 起動：
+**これだけ。** x-tweetcraft フォルダの中で Claude Code を起動すれば、プラグインもユーザーデータも全部そこで完結します。
 
-```bash
-cd <X運用に使う作業フォルダ>             # x-tweetcraftと同じ場所でもOK、別フォルダでもOK
-claude --plugin-dir <x-tweetcraftのパス>
-```
-
-**具体例:** `~/Documents/x-tweetcraft` にダウンロードした場合
-```bash
-claude --plugin-dir ~/Documents/x-tweetcraft
-```
-
-`--plugin-dir` は「プラグインがあるフォルダの場所」を教える指定です。
+> 💡 **あなたのデータ（brand-voice.md や personal-info/）はx-tweetcraftフォルダの中に作られます。**
+> git で管理されるのはプラグイン本体だけ（ユーザーデータは自動で除外済み）なので、安心して一箇所にまとめて使えます。
 
 ---
 
