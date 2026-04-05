@@ -100,11 +100,48 @@ Generate drafts personalized to the user's voice. Each draft should:
 **推奨時間帯:** [Time, only if API data supports it]
 ```
 
-### Step 7: Add summary and feedback
+### Step 7: Save draft log
+
+**Always save the generated drafts to a log file**, regardless of whether the user picks anything. This preserves history and feeds future analysis/learning.
+
+Save to (same path priority as brand-voice.md):
+1. `ceo/x-automation/personal-info/draft-logs/YYYY-MM-DD_HHMM.md` (VITAL Z convention)
+2. `./personal-info/draft-logs/YYYY-MM-DD_HHMM.md` (other users)
+3. `./draft-logs/YYYY-MM-DD_HHMM.md` (fallback)
+
+Create the directory if it doesn't exist.
+
+File format:
+```markdown
+# Draft Log - YYYY-MM-DD HH:MM
+
+## Context
+- brand-voice version: [hash or updated date]
+- learnings.md: [exists / not exists]
+- API status: [connected/disconnected], layers used: [L1/L2/L3]
+- Topic requested: [user-specified topic or "自動"]
+
+## Hypothesis
+[The hypothesis used]
+
+## Drafts
+[All N drafts with their rationale]
+
+## User response
+[To be filled by x-reflect if user provides feedback]
+- Picked: (will be updated)
+- Rejected: (will be updated)
+- Edits: (will be updated)
+```
+
+The "User response" section is initially empty. x-reflect fills it in when the user gives feedback.
+
+### Step 8: Add summary and feedback
 
 At the top of the output, show:
 - The hypothesis used
 - Which data sources were available (brand-voice.md + personal-info/ / Layer 2 / Layer 3)
+- Tell the user: "下書きは `personal-info/draft-logs/` に保存しました"
 
 At the bottom, if API not connected, add:
 > **💡 X APIを接続するとこう改善されます:**
@@ -114,7 +151,7 @@ At the bottom, if API not connected, add:
 > - `post_tweet` ツールで下書きを直接投稿可能
 > - API接続は `x-connect-api` スキルで設定できます
 
-### Step 8: Invite iteration and deepening
+### Step 9: Invite iteration and deepening
 
 End with:
 > 気に入った案はありますか？修正したい部分があれば「3番をもっとカジュアルに」のように指示してください。投稿するなら `x-post` スキル（計画中・API接続後に実装予定）が使えます。
@@ -129,7 +166,7 @@ End with:
 > - 「今伸びてるツイート調べて」 → `x-research-trends` で市場研究（API推奨）
 > - 「今週の戦略立てて」 → `x-content-strategist` agent で週次戦略レビュー
 
-### Step 9: Trigger x-reflect on user response
+### Step 10: Trigger x-reflect on user response
 
 After presenting drafts, when the user responds with their picks/edits/rejections:
 - Invoke the `x-reflect` skill workflow to capture the learnings

@@ -64,8 +64,9 @@ x-tweetcraft/
 |-------|-------------|------|------------|
 | `x-setup` | 初回オンボーディング | brand-voice構造を生成 | L1のみ |
 | `x-interview` | brand-voice深化希望 | 6Round対話型インタビュー（再開可） | 不要 |
-| `x-draft` | 「今日のツイート作って」 | 下書き5-10案生成（統合型） | L1+L2+L3軽量 |
+| `x-draft` | 「今日のツイート作って」 | 下書き5-10案生成（統合型）、draft-logs/に自動保存 | L1+L2+L3軽量 |
 | `x-reflect` | x-draft後のフィードバック時 | 採用/却下/編集から学習してlearnings.mdに蓄積 | 不要 |
+| `x-schedule` | 自動化セットアップ | 朝の下書き準備・週次レビュー等をcron登録 | 設定 |
 | `x-connect-api` | X API接続希望 | Developer Portal申請ガイド | 設定 |
 | `x-analyze-posts` | 自分の投稿分析希望 | L2単独・深い分析 | L2 |
 | `x-research-trends` | 市場調査希望 | L3単独・トレンド研究 | L3 |
@@ -89,8 +90,12 @@ personal-info/
 ├── values-and-origin.md          # 私的: 価値観・原体験・キャリア
 ├── audience-and-messages.md      # 私的: 届けたい人・コアメッセージ
 ├── learnings.md                  # x-reflectが蓄積するユーザーの好み学習
+├── schedules.md                  # x-scheduleが登録した自動実行の一覧
 ├── interview-logs/               # x-interviewセッション記録
-└── analysis-logs/                # x-analyze-posts/strategy reportsの保管場所
+├── draft-logs/                   # x-draftの全出力履歴（自動保存）
+├── analysis-logs/                # x-analyze-posts レポート
+├── strategy-reports/             # x-content-strategist レポート
+└── trend-reports/                # x-research-trends レポート
 ```
 
 ### 設計思想
