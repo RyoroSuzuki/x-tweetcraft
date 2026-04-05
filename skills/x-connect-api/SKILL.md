@@ -82,19 +82,161 @@ Always remind before credential handling:
 > 保存先: `~/.x-tweetcraft.env`（ホーム直下、リポジトリ外）
 > バックアップ: パスワードマネージャー推奨
 
-### Step 6: Connection test (Step D)
+---
 
-When credentials are ready:
+## Phase B: 環境セットアップ代行（非エンジニア最優先）
 
-**If x-tweetcraft MCP server is implemented (P1):**
-Invoke a simple API call via MCP to verify connection (e.g., get user profile).
+**Claudeがbashコマンドを実際に実行**してユーザーを詰まらせない。ユーザーは Y/N で答えるだけ。
 
-**If MCP server not yet implemented:**
-Tell the user:
-> 認証情報の設定まで完了しました。
-> MCPサーバーがまだ未実装のため、実際のAPI呼び出しは将来のバージョンで有効化されます。
-> 現時点では .env ファイルを正しい場所に保存した状態で完了扱いとします。
-> 準備は整っているので、x-post や x-analyze-posts が実装され次第すぐ使えます。
+**全bash実行前に必ずユーザー確認を取る:**
+> これから以下を実行します。よろしいですか？
+> `<コマンド>`
+> （Y/N）
+
+### B1: Python環境チェック
+
+Run:
+```bash
+python3 --version
+```
+
+- **3.9以上が表示:** B2に進む
+- **出ない or 3.8以下:** ユーザーのOSを聞いて、`references/python-env-setup.md` のOS別導入手順を参照して案内する
+
+### B2: pip利用可否チェック
+
+Run:
+```bash
+python3 -m pip --version
+```
+
+- **正常:** B3に進む
+- **"No module named pip":** `python3 -m ensurepip --upgrade` を案内
+
+### B3: 依存ライブラリインストール
+
+プラグインのインストール場所を特定：
+```bash
+echo "${CLAUDE_PLUGIN_ROOT}"
+```
+
+その値を使ってrequirements.txtをインストール（`--user` フラグでシステムPython汚染回避）：
+```bash
+python3 -m pip install --user -r "${CLAUDE_PLUGIN_ROOT}/mcp-server/requirements.txt"
+```
+
+**エラー時の分岐:**
+- `externally-managed-environment` (macOS Homebrew Python 3.11+): venvモードを案内
+- `Permission denied`: `--user` フラグが抜けていないか確認
+- その他: `references/python-env-setup.md` のトラブルシュートを参照
+
+import確認：
+```bash
+python3 -c "import tweepy; import fastmcp; import dotenv; print('All OK')"
+```
+
+### B4: .env ファイル雛形作成
+
+**確認後に実行:**
+```bash
+# 既存チェック
+ls -la ~/.x-tweetcraft.env 2>/dev/null
+```
+
+- **既存で値入り:** B5をスキップしてB6へ
+- **既存で空 or 未作成:** 以下を実行
+
+```bash
+cat > ~/.x-tweetcraft.env << 'EOF'
+# X Developer API credentials for x-tweetcraft
+# Get these from https://developer.x.com/en/portal/dashboard
+
+X_BEARER_TOKEN=
+X_API_KEY=
+X_API_SECRET=
+X_ACCESS_TOKEN=
+X_ACCESS_TOKEN_SECRET=
+EOF
+
+chmod 600 ~/.x-tweetcraft.env
+```
+
+### B5: 認証情報入力（セキュリティ最優先）
+
+ユーザーに2つの方式を提示：
+
+> 認証情報をどう入力しますか？
+>
+> **A) エディタで直接貼り付け（簡単・macOS推奨）**
+> → ファイルをテキストエディタで開いて、値を貼り付けて保存
+>
+> **B) 対話スクリプトで入力（よりセキュア）**
+> → 画面に表示されない方式で1つずつ入力。チャット履歴にも残らない
+>
+> どちらにしますか？
+
+**方式A選択時:**
+```bash
+open -t ~/.x-tweetcraft.env   # macOS
+# または
+xdg-open ~/.x-tweetcraft.env  # Linux
+# または
+notepad "$env:USERPROFILE\.x-tweetcraft.env"  # Windows
+```
+
+ユーザーに伝える：
+> エディタが開きました。5つの `=` の右側に各値を貼り付けて、保存してください。
+> **ダブルクォート（"）で囲まない**でください。保存したら教えてください。
+
+**方式B選択時:**
+```bash
+python3 "${CLAUDE_PLUGIN_ROOT}/mcp-server/setup-credentials.py"
+```
+
+対話形式でgetpass経由入力（画面非表示）。
+
+**Claudeがやってはいけないこと:**
+- `cat ~/.x-tweetcraft.env` を実行しない（値が見えてしまう）
+- 値をチャットに表示しない
+- 値をコピーして別の場所に書き出さない
+
+### B6: 動作確認（認証情報をログに出さない）
+
+空欄チェックのみ（値は読まない）：
+```bash
+grep -c "^X_[A-Z_]*=$" ~/.x-tweetcraft.env
+```
+
+`0` と出れば全入力完了。他の数字が出たらユーザーに未入力の項目があることを伝える（どの項目かは言わない、プライバシーのため「○項目未入力です」だけ）。
+
+ファイル権限確認：
+```bash
+ls -la ~/.x-tweetcraft.env
+```
+
+`-rw-------` であることを確認。違う場合は `chmod 600 ~/.x-tweetcraft.env` を実行。
+
+**詳細参照:**
+- Python環境: `references/python-env-setup.md`
+- 認証情報入力: `references/credential-input-guide.md`
+
+---
+
+## Phase C: 接続テスト
+
+### Step 6: MCPサーバーを再起動して接続確認
+
+MCPサーバーは `.mcp.json` 経由で起動する。認証情報を設定した後は **Claude Codeセッションを再起動** するとMCPサーバーが新しい `.env` を読み込む。
+
+ユーザーに伝える：
+> 認証情報のセットアップが完了しました。
+>
+> 新しい認証情報を読み込むため、Claude Codeを一度終了して再起動してください：
+> ```
+> /exit（またはCtrl+D）→ claude --plugin-dir <plugin-path> で再起動
+> ```
+>
+> 再起動後、「X APIの接続テストして」と言えば、軽いAPI呼び出しで動作確認します。
 
 ### Step 7: Next steps guidance
 
