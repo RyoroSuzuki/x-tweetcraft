@@ -142,16 +142,41 @@ From the gathered tweets, extract:
 
 Keep analysis concise. Do not over-analyze or invent characteristics not visible in the samples.
 
-### Step 5: Generate brand-voice.md draft
+### Step 5: Generate brand-voice structure
 
-Create a draft based on the template at `${CLAUDE_PLUGIN_ROOT}/data/brand-voice-template.md` but filled in with the user's actual content from analysis.
+Create a **2-layer structure** based on the analysis:
+
+**File structure to generate:**
+```
+brand-voice.md                           # Index + quick summary
+personal-info/
+├── public-voice.md                      # Public: tone, themes, patterns, NG items
+├── values-and-origin.md                 # Private: values, story, career
+├── audience-and-messages.md             # Private: target, core messages
+└── interview-logs/                      # For x-interview sessions
+```
+
+**brand-voice.md** is the index containing:
+- Quick summary (name, tone, themes)
+- References to personal-info/ files
+- Command guide (x-draft, x-interview etc.)
+
+**personal-info/public-voice.md** (from template at `${CLAUDE_PLUGIN_ROOT}/data/brand-voice-template.md`):
+- Persona, tone, themes, patterns, NG items
+- Filled with user's actual content from analysis
+
+**personal-info/values-and-origin.md** (initial stub):
+- Empty scaffolding for x-interview to fill later
+- Note: "Run `x-interview` to deepen this section"
+
+**personal-info/audience-and-messages.md** (initial stub):
+- Basic target audience from tweet analysis
+- Note: "Run `x-interview` to deepen this section"
 
 **Storage location:**
-- Default: Save to the current working directory as `brand-voice.md`
-- If the user specifies a different path, use that
-- For VITAL Z users, the convention is `ceo/x-automation/brand-voice.md`
-
-Ask the user before writing: "brand-voice.md の保存先はどこにしますか？（デフォルト: `./brand-voice.md`）"
+- Default: Save to the current working directory
+- For VITAL Z users: `ceo/x-automation/`
+- Ask the user: "brand-voice の保存先はどこにしますか？（デフォルト: `./`）"
 
 ### Step 6: Present draft for user review
 
@@ -171,12 +196,15 @@ Write the confirmed version to the chosen path. Confirm with the user that it wa
 ### Step 8: Guide the user to next steps
 
 Tell the user:
-> brand-voice.md を保存しました。これで準備完了です。
+> brand-voice 構造を保存しました。これで準備完了です。
 >
 > 次のステップ:
-> - 「今日のツイート作って」と言うと `x-draft` スキルが起動して下書きを5-10案生成します
-> - X Developer APIを申請・接続すると、過去投稿の自動分析・トレンド分析・自動投稿ができるようになります
-> - API接続後は `x-refresh-brand-voice` でより深い分析に更新できます
+> - **今すぐ使う**: 「今日のツイート作って」で `x-draft` 起動 → 下書き5-10案生成
+> - **もっと深めたい**: 「x-interviewで深めたい」 → 原体験・価値観までインタビューしてbrand-voiceを育てる（推奨）
+> - **X API接続**: 「x-api-setupして」 → Developer API申請・接続ガイド
+> - **API接続後の深い更新**: `x-refresh-brand-voice` で過去投稿100件以上を分析
+>
+> 💎 最初のツイート下書きが浅く感じたら、まず `x-interview` で深めることをおすすめします。
 
 ## Analysis Heuristics
 

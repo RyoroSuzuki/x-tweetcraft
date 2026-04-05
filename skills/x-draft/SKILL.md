@@ -9,7 +9,7 @@ Generate multiple personalized tweet drafts grounded in the user's brand voice, 
 
 ## Workflow
 
-### Step 1: Locate and load brand-voice.md
+### Step 1: Locate and load brand-voice structure
 
 Search for `brand-voice.md` in the following locations (in order):
 1. Current working directory root: `./brand-voice.md`
@@ -18,7 +18,16 @@ Search for `brand-voice.md` in the following locations (in order):
 
 **If not found:** Tell the user "brand-voice.md が見つかりません。`x-setup` を実行して作成しましょうか？" and stop.
 
-Read the file and internalize the persona, tone, themes, patterns, and NG items.
+Read `brand-voice.md` (the index file). It contains the quick summary and references to:
+- `personal-info/public-voice.md` — 公的トーン・スタイル・テーマ・型・NG事項
+- `personal-info/values-and-origin.md` — 価値観・原体験・キャリア（Private）
+- `personal-info/audience-and-messages.md` — 届けたい人・コアメッセージ（Private）
+
+**Read ALL referenced files** (not just brand-voice.md index). The public files guide output style; the private files inform voice, perspective, and motivation — but their content MUST NOT be directly quoted in tweets.
+
+Internalize:
+- Public: tone, themes, patterns, NG items, 3-step structure
+- Private: values, origin story, target audience, core messages (as internal context only)
 
 ### Step 2: Check X API availability
 
@@ -89,7 +98,7 @@ Generate drafts personalized to the user's voice. Each draft should:
 
 At the top of the output, show:
 - The hypothesis used
-- Which data sources were available (brand-voice.md / Layer 2 / Layer 3)
+- Which data sources were available (brand-voice.md + personal-info/ / Layer 2 / Layer 3)
 
 At the bottom, if API not connected, add:
 > **💡 X APIを接続するとこう改善されます:**
@@ -97,11 +106,15 @@ At the bottom, if API not connected, add:
 > - 今のトレンドから「勝ちパターン」を取り込み
 > - より具体的な「○時台が伸びやすい」推奨時間
 > - `post_tweet` ツールで下書きを直接投稿可能
+> - API接続は `x-api-setup` スキルで設定できます
 
-### Step 8: Invite iteration
+### Step 8: Invite iteration and deepening
 
 End with:
 > 気に入った案はありますか？修正したい部分があれば「3番をもっとカジュアルに」のように指示してください。投稿するなら `x-post` スキルが使えます。
+>
+> 💎 **下書きの深みが足りないと感じたら:**
+> 「x-interviewで深めたい」と声をかけてください。パーソナライズ精度を上げるインタビューを再開/追加できます。
 
 ## Quality Checklist
 
