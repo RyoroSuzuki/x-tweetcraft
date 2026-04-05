@@ -193,18 +193,34 @@ Iterate based on feedback. Common adjustments:
 
 Write the confirmed version to the chosen path. Confirm with the user that it was saved.
 
-### Step 8: Guide the user to next steps
+### Step 8: Offer chaining to x-interview
 
 Tell the user:
-> brand-voice 構造を保存しました。これで準備完了です。
+> brand-voice 構造を保存しました。基本セットアップ完了です。
 >
+> ただ、ツイートだけから作ったbrand-voiceはどうしても表層的になりがちです。
+> あなたの**原体験・価値観・転機**を入れると、あなたにしか書けない投稿を生成できるようになります。
+>
+> **今すぐ `x-interview` で1 Round（5分程度）だけやってみませんか？**
+> 全部で6 Roundありますが、今日は1つだけでもOK。続きは後日でも大丈夫です。
+>
+> A) はい、Round 1 だけやる（推奨）
+> B) 今日はここまで、後でやる
+> C) 最後まで一気にやる（20-30分）
+
+**If user chooses A or C:** Immediately transition to the `x-interview` skill workflow. Execute Step 1-9 of x-interview as if it were the current skill.
+
+**If user chooses B:** Tell the user:
+> OK、いつでも「x-interviewで深めたい」と声をかけてください。
+
+### Step 9: Final guidance (if x-interview was done or skipped)
+
+Tell the user:
 > 次のステップ:
 > - **今すぐ使う**: 「今日のツイート作って」で `x-draft` 起動 → 下書き5-10案生成
-> - **もっと深めたい**: 「x-interviewで深めたい」 → 原体験・価値観までインタビューしてbrand-voiceを育てる（推奨）
-> - **X API接続**: 「x-api-setupして」 → Developer API申請・接続ガイド
-> - **API接続後の深い更新**: `x-refresh-brand-voice` で過去投稿100件以上を分析
->
-> 💎 最初のツイート下書きが浅く感じたら、まず `x-interview` で深めることをおすすめします。
+> - **API接続**: 「x-connect-apiして」 → X Developer API申請・接続ガイド
+> - **brand-voiceを育てる**: 「x-interviewで深めたい」（いつでも）
+> - **API接続後の深い更新**: `x-refresh-brand-voice`
 
 ## Analysis Heuristics
 
