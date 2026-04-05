@@ -1,133 +1,143 @@
 # x-tweetcraft
 
-Claude Code plugin for crafting personalized X (Twitter) posts. Generates tweet drafts grounded in your own brand voice, then (optionally) automates posting — without losing the voice that makes you *you*.
+自分のブランドボイスを保ったまま、X（Twitter）の投稿を半自動化するClaude Codeプラグイン。
 
-## Features
+「自動化しても、自分の声を失わない」がコンセプト。
 
-- **Personalized draft generation** — Tweet drafts grounded in your own voice, themes, and patterns
-- **Progressive enhancement** — Works without X API; richer when connected
-- **2-layer brand voice** — Public (tweet-ready) + Private (voice source, not publicly shared)
-- **Pausable interview** — Deepen your brand voice over multiple sessions
-- **Onboarding flow** — From zero to working brand voice in minutes
+## できること
 
-## Skills Included
+- **パーソナライズされた下書き生成** — あなたのトーン・テーマ・型に沿ったツイート案を5-10件
+- **2層構造のブランドボイス** — 公開用（Public）と内部参照用（Private）を分離
+- **分割可能なインタビュー** — 複数セッションに分けてブランドボイスを育てられる
+- **段階的な機能拡張** — X API未接続でも動作。接続後に自動投稿・分析が使える
 
-| Skill | Purpose |
-|-------|---------|
-| `x-setup` | Initial onboarding: generates brand-voice structure from X account + sample tweets |
-| `x-interview` | Deep personal interview (6 rounds, pausable) to enrich brand voice |
-| `x-draft` | Generates 5-10 personalized tweet drafts with hypothesis and rationale |
-| `x-connect-api` | Guides X Developer API application, authentication, and connection |
+## 同梱スキル
 
-**Planned (P1, after X API connection):**
-- `x-post` — Post drafts directly to X
-- `x-refresh-brand-voice` — Update brand voice from 100+ historical posts
-- `x-reflect` — Weekly learning from chosen/rejected drafts
+| スキル | 役割 |
+|--------|------|
+| `x-setup` | 初回オンボーディング。Xアカウントとツイートからブランドボイスを生成 |
+| `x-interview` | 6ラウンドの対話型インタビュー（途中停止・再開OK） |
+| `x-draft` | 下書き5-10案を生成。仮説と根拠付き |
+| `x-connect-api` | X Developer API申請・認証設定をガイド |
 
-## Install
+**P1（X API接続後に追加予定）:**
+- `x-post` — 下書きを直接投稿
+- `x-refresh-brand-voice` — 過去投稿100件以上を分析してブランドボイスを深化
+- `x-reflect` — 採用/却下された下書きから自律学習
 
-### Prerequisites
+## インストール
 
-This plugin works best with these Claude Code companion skills installed:
+### 前提: 相性のいいCompanion Skills（推奨）
 
-**Strongly recommended:**
-- `document-skills@anthropic-agent-skills` — PDF/DOCX/XLSX/PPTX readers (useful for importing vision docs, career sheets, brand guidelines)
-- `superpowers@claude-plugins-official` — brainstorming, writing-plans, TDD workflows (useful for content planning)
+x-tweetcraftと併用すると便利なClaude Code公式スキル：
 
-Install companion skills:
+- **`document-skills@anthropic-agent-skills`** — PDF/Word/Excel/PowerPointを読み込める（職歴書・ブランド資料の分析に便利）
+- **`superpowers@claude-plugins-official`** — ブレスト・計画・TDD等の汎用ワークフロー（コンテンツ戦略に活用）
+
+インストールコマンド:
 ```bash
 claude plugin install document-skills@anthropic-agent-skills
 claude plugin install superpowers@claude-plugins-official
 ```
 
-### Install x-tweetcraft
+### x-tweetcraft本体
 
-**Option A: Local (for development/testing):**
+**方法A: ローカル開発用（推奨・今のところ）**
 ```bash
 git clone https://github.com/RyoroSuzuki/x-tweetcraft.git ~/develop/x-tweetcraft
 claude --plugin-dir ~/develop/x-tweetcraft
 ```
 
-**Option B: Via marketplace (when published):**
+**方法B: マーケットプレース経由（公開後）**
 ```bash
 claude plugin install x-tweetcraft@<marketplace-name>
 ```
 
-## Usage
+## 使い方
 
-### Quick start
+### 初回セットアップ
 
 ```
-# In Claude Code
-「x-setupして」
+「x-tweetcraftをセットアップして」
 ```
 
-This walks you through:
-1. Companion skills check
-2. Your X account info
-3. Tweet sample gathering (copy-paste or Claude browser extension)
-4. Brand voice generation
-5. Offer to chain to x-interview for depth
+x-setupスキルが起動して、以下を案内します:
+1. 推奨Companion Skillsのチェック
+2. あなたのXアカウント情報のヒアリング
+3. ツイートサンプルの収集（コピペ または Claudeブラウザ拡張）
+4. ブランドボイス雛形の生成
+5. x-interviewへの連続オファー（深掘り希望の場合）
 
-### Daily workflow
+### 日常の下書き生成
 
 ```
 「今日のツイート作って」
 ```
 
-Generates 5-10 drafts from your brand voice. Pick, edit, post.
+ブランドボイスを元に下書き5-10案を生成。仮説・根拠・推奨パターン付き。
 
-### Deepening your brand voice
+### ブランドボイスを深める
 
 ```
 「x-interviewで深めたい」
 ```
 
-Runs a 6-round interview. Pausable — do 1 round today, continue tomorrow.
+6ラウンドの対話型インタビューを実行。1日1ラウンドでも、まとめてでも、自由なペースで。前回の続きから再開できます。
 
-### Connecting X API
+### X APIを接続する
 
 ```
 「x-connect-apiして」
 ```
 
-Walks through X Developer Portal application and setup.
+X Developer Portal申請、App作成、認証情報設定、接続テストまでガイドします。
 
-## Brand Voice Structure
+## ブランドボイスの構造
 
-After setup, you'll have this structure (in your working directory):
+セットアップ後、あなたの作業ディレクトリに以下が作成されます:
 
 ```
-brand-voice.md                    # Index + quick summary + command guide
+brand-voice.md                    # 目次 + クイックサマリ + コマンド案内
 personal-info/
-├── public-voice.md               # Public layer: tone, themes, patterns
-├── values-and-origin.md          # Private layer: values, origin, career
-├── audience-and-messages.md      # Private layer: target, core messages
-└── interview-logs/               # x-interview session records
+├── public-voice.md               # 公的: トーン・テーマ・型・NG事項
+├── values-and-origin.md          # 私的: 価値観・原体験・キャリア
+├── audience-and-messages.md      # 私的: 届けたい人・コアメッセージ
+└── interview-logs/               # x-interviewセッション記録
 ```
 
-The **2-layer design** separates:
-- **Public** (tweet-ready) — tone, themes, patterns you'll use in tweets
-- **Private** (voice source) — origin stories and values that inform your perspective but aren't directly published
+### 2層設計の意図
 
-This lets you build a rich brand voice without having to publicly share personal stories before you're ready.
+- **Public（公的レイヤー）** — ツイートに直接反映してOKな要素（トーン、テーマ、型）
+- **Private（私的レイヤー）** — 視点・動機の「源」。x-draftが内部参照するが直接ツイート化はしない
 
-## Philosophy
+原体験・価値観転換ストーリー等を「公開する前の準備段階」として保管でき、成功や節目が来た時に取り出せる設計です。
 
-> "Same road, walking alongside." Not a mentor, not a coach — just someone walking the same path who leaves observations for others following.
+## 思想
 
-x-tweetcraft is designed to help you show up consistently as yourself, without performance or posturing. The goal isn't virality — it's authentic presence that finds your people.
+> 「同じ道を迷いながら歩く同志」
+>
+> 上から目線の師匠でもなく、コーチでもなく、ただ同じ道を歩いている人。隣から気づきを置いていくくらいの距離感。
 
-## Development Status
+x-tweetcraftは、**盛らず・カッコつけず・等身大**で発信を続けたい人のためのツールです。バズりを狙うのではなく、**自分の声を失わずに発信を継続する**ことに価値を置きます。
 
-- ✅ MVP: Core generation flow (no API required)
-- ⏳ P1: X API integration (MCP server, auto-post, analytics)
-- 🔜 P2: Reflection/learning loop
+## PCへの負荷について
 
-## License
+**現時点: ゼロです。**
+
+このプラグインは **Markdown形式のスキル集** であり、Claude Codeが必要な時に読むだけです。サーバーもバックグラウンドプロセスも立ち上がりません。
+
+将来、X API接続用のMCPサーバーを追加した場合でも、それはClaude Codeセッション中にのみ動く軽量なプロセスです（常駐しません）。
+
+## 開発状況
+
+- ✅ **MVP**: ブランドボイス生成、下書き生成、インタビュー、API接続ガイド
+- ⏳ **P1**: X API統合（MCPサーバー、自動投稿、分析）
+- 🔜 **P2**: 学習ループ（x-reflect）
+
+## ライセンス
 
 MIT
 
-## Author
+## 作者
 
-Ryoro Suzuki ([VITAL Z Inc.](https://www.vital-z.co.jp/))
+鈴木遼郎（[株式会社VITAL Z](https://www.vital-z.co.jp/)）
