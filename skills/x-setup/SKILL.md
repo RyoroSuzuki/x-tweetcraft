@@ -78,10 +78,13 @@ First, check if they already have the Claude browser extension. Ask:
 **If NOT installed**, guide them:
 > Claudeブラウザ拡張のインストール手順：
 >
-> 1. Chromeまたは対応ブラウザで https://claude.ai/download を開く
-> 2. 「Browser Extension」セクションから拡張機能をインストール
-> 3. Claudeアカウントでログイン
-> 4. XのプロフィールページでアイコンをクリックしてClaudeを起動
+> 1. Chrome（またはChromium系ブラウザ）で https://claude.com/chrome を開く
+> 2. 「Add to Chrome」ボタンから拡張機能をインストール
+> 3. Claudeアカウント（Pro/Max/Team/Enterprise）でログイン
+> 4. 拡張のピン留め（パズルピースアイコン → Claude の横の画鋲をクリック）
+> 5. Xのプロフィールページで拡張アイコンをクリックしてClaudeを起動
+>
+> ※ Claude for Chrome はPro以上の有料プランが必要です。
 >
 > インストールできたら教えてください。
 

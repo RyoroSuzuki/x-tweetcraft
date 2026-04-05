@@ -38,9 +38,9 @@ AIが書いたと思わせない、「本物のあなたがそこで考えた」
 
 ## インストール
 
-**必要なもの:** Claude Code（https://claude.com/claude-code）とX（Twitter）アカウント。
+**必要なもの:** [Claude Code](https://claude.com/product/claude-code)（未導入ならまずこちらをインストール）
 
-### ステップ1: ツール一式をダウンロード
+### 方法A: Claudeに任せる（最も簡単）
 
 Claude Codeで以下のように話しかけてください：
 
@@ -49,27 +49,33 @@ x-tweetcraftをインストールしたい
 ```
 
 → Claudeが以下を代行します：
-1. ホームフォルダ（`~`）に `x-tweetcraft` というフォルダを作成
+1. **保存先をあなたに確認**（現在の作業フォルダ、ドキュメント、ホーム等から選べます）
 2. GitHubからツール一式をダウンロード
 3. 関連ツール（おすすめのClaude Code公式スキル）のチェックと導入案内
+4. `claude --plugin-dir` コマンドでの起動方法を案内
 
-自分でやりたい方は、ターミナルで以下を実行してもOKです：
+### 方法B: 自分でダウンロードする（ターミナル操作）
+
+ターミナルで好きな場所に移動して、git でダウンロードします：
 
 ```bash
-cd ~
+cd <お好きな場所>        # 例: cd ~/Documents や cd ~/my-projects
 git clone https://github.com/RyoroSuzuki/x-tweetcraft.git
 ```
 
-### ステップ2: x-tweetcraftを使う作業フォルダでClaude Codeを起動
-
-X運用に使うフォルダを用意して、そこから Claude Code を起動します：
+その後、Claude Code を **プラグインの場所を指定して** 起動：
 
 ```bash
-cd ~/x-work          # X運用用のフォルダ（お好きな名前でOK、無ければ作る）
-claude --plugin-dir ~/x-tweetcraft
+cd <X運用に使う作業フォルダ>             # x-tweetcraftと同じ場所でもOK、別フォルダでもOK
+claude --plugin-dir <x-tweetcraftのパス>
 ```
 
-`--plugin-dir` は「プラグインの場所」を指定する命令です。ダウンロードした場所を指定すれば、そのプラグインが使えるClaude Codeセッションが立ち上がります。
+**具体例:** `~/Documents/x-tweetcraft` にダウンロードした場合
+```bash
+claude --plugin-dir ~/Documents/x-tweetcraft
+```
+
+`--plugin-dir` は「プラグインがあるフォルダの場所」を教える指定です。
 
 ---
 
@@ -84,7 +90,7 @@ x-tweetcraftをセットアップして
 以下の流れで進みます：
 
 1. **Xアカウント情報を伝える** — URLか `@ハンドル`
-2. **ツイートを5〜10件教える** — 「これは自分らしい」と思うものを。Claudeブラウザ拡張があれば自動抽出プロンプトも提示されます
+2. **ツイートを5〜10件教える** — 「これは自分らしい」と思うものを。[Claudeブラウザ拡張](https://claude.com/chrome)があれば自動抽出プロンプトも提示されます
 3. **あれば追加資料を渡す** — X運用方針メモ・ブランディング資料など（なくてもOK）
 4. **あなた用のブランドボイス雛形が自動生成される** — トーン・テーマ・型・NG事項
 5. **深掘りインタビューへ進むか選ぶ** — 5分のRound 1だけでもOK
@@ -134,8 +140,12 @@ x-tweetcraftをセットアップして
 ## 応用: より高度な運用
 
 基本の下書き生成ができるようになったら、以下の機能で運用を強化できます。
+興味がある方だけ開いて読んでください。
 
-### X APIを接続するとできること
+<details>
+<summary><b>🔗 X APIを接続するとできること（クリックで展開）</b></summary>
+
+<br>
 
 `x-connect-apiして` でX Developer APIを接続すると、**「今日のツイート作って」と言うだけで裏側が賢くなります**。
 
@@ -158,7 +168,7 @@ x-tweetcraftをセットアップして
 - 「自分の投稿分析して」 — 過去投稿の傾向を深掘り
 - 「今伸びてるツイート調べて」 — 市場トレンドをじっくりリサーチ
 
-#### X API利用の費用（※x-tweetcraft本体は無料です）
+### X API利用の費用（※x-tweetcraft本体は無料です）
 
 > ⚠️ **これはX Developer API（X社）の料金であって、x-tweetcraftの費用ではありません。**
 > x-tweetcraftのインストール・使用自体は無料。API接続して分析・自動投稿まで使いたい場合にだけ、X社に対して払う料金です。
@@ -178,7 +188,12 @@ x-tweetcraftをセットアップして
 
 **接続セットアップはClaudeが代行します。** Python環境のチェック、ライブラリ導入、認証情報ファイルの作成・権限設定まで、ユーザーはY/Nで答えるだけ。
 
-### 起きたら下書きが出来上がっている（自動化）
+</details>
+
+<details>
+<summary><b>⏰ 起きたら下書きが出来上がっている（自動化・クリックで展開）</b></summary>
+
+<br>
 
 「毎朝自分で下書き作るの面倒」を解消する自動化機能です。
 
@@ -199,6 +214,8 @@ x-scheduleして
 ```
 夜11時PC放置 → 起床6時 → PC開く → 下書き10案が準備されている → 選んで投稿
 ```
+
+</details>
 
 ---
 
@@ -249,5 +266,7 @@ A: Claude Code自体があなたの相談相手です。「x-tweetcraftのこの
 ## 作者・ライセンス・サポート
 
 **作者:** 鈴木遼郎（[株式会社VITAL Z](https://www.vital-z.co.jp/)）
+
 **ライセンス:** MIT
-**フィードバック・バグ報告:** https://github.com/RyoroSuzuki/x-tweetcraft/issues
+
+**フィードバック・バグ報告:** [GitHub Issues](https://github.com/RyoroSuzuki/x-tweetcraft/issues)
