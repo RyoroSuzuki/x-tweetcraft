@@ -47,12 +47,13 @@ x-tweetcraft/
 ├── data/                               # 共通データ・テンプレート
 │   ├── brand-voice-template.md         # ブランドボイステンプレート
 │   └── browser-extraction-prompts.md   # 共通ブラウザ拡張プロンプト集
-├── skills/                             # Claudeが読む手順書（8スキル）
+├── skills/                             # Claudeが読む手順書（9スキル）
 │   ├── x-setup/SKILL.md
 │   ├── x-interview/
 │   │   ├── SKILL.md
 │   │   └── references/interview-questions.md
 │   ├── x-draft/SKILL.md
+│   ├── x-improve/SKILL.md
 │   ├── x-reflect/SKILL.md
 │   ├── x-schedule/
 │   │   ├── SKILL.md
@@ -199,7 +200,9 @@ x-interview（任意）
   ↓
 ユーザーが選択・編集
   ↓
-API接続済: x-post で投稿 / 未接続: クリップボードコピー
+x-post（計画中）で投稿 or クリップボードコピー
+  ↓
+採用理由・修正を伝えると x-reflect が自動学習
 ```
 
 ### 深掘り・分析
@@ -223,10 +226,10 @@ API接続済: x-post で投稿 / 未接続: クリップボードコピー
 
 ### 新しいagentを追加するとき
 
-1. `agents/<name>.md` を作成
+1. `agents/<name>.md` を作成（`.md` ファイルを agents/ 直下に）
 2. frontmatter の `description` に「いつ使うか」を明記（複数example入り）
-3. `plugin.json` の `agents` フィールドに追加
-4. 独立文脈で動くことを前提に設計（パラメータを明示的に受け取る）
+3. 独立文脈で動くことを前提に設計（パラメータを明示的に受け取る）
+4. Claude Code が agents/ を自動ディスカバリするため、plugin.json 更新は不要
 
 ### skill vs agent の判断基準
 
@@ -247,28 +250,11 @@ X_ACCESS_TOKEN=...
 X_ACCESS_TOKEN_SECRET=...
 ```
 
-### X API プランと制限
-
-| 機能 | Free | Basic ($200/月) |
-|------|------|---------------|
-| 投稿 | 1,500/月 | 3,000/月 |
-| 自分の投稿取得 | 10,000/月 | 50,000/月 |
-| ツイート検索 | ❌ | ✅ |
-| メトリクス | 制限あり | 詳細取得 |
-
-**MVP運用はFreeで可。L3（トレンド分析）を本格運用するならBasic必要。**
-
-## 思想・トーン
-
-- **同じ道を迷いながら歩く同志**（上から目線の師匠ではない）
-- **盛らず・カッコつけず・等身大**で発信を支援する
-- **バズりより継続性**を重視
-
-このトーンはgenerateされるすべてのツイートに適用される。ユーザーのbrand-voice.mdがさらにこれを個別化する。
+料金・プラン情報は `skills/x-connect-api/references/api-plans-and-costs.md` および公式 https://developer.x.com/#features 参照。
 
 ## メンテナンス
 
-- 新機能追加時: このCLAUDE.mdを更新
-- skill追加時: Skills表を更新
-- agent追加時: Agents表 + `plugin.json` を更新
-- API仕様変更時: API接続関連セクションを更新
+- 新機能追加時: このCLAUDE.mdを更新（Skills表・Agents表・ディレクトリツリー）
+- skill/agent ファイル自体は `skills/`, `agents/` 配下に置けば Claude Code が自動ディスカバリする
+- API仕様変更時: `skills/x-connect-api/references/api-plans-and-costs.md` を更新
+- プラグイン名・バージョン変更時: `.claude-plugin/plugin.json` を更新
