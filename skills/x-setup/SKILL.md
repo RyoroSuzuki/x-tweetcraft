@@ -207,7 +207,7 @@ personal-info/
 
 **Storage location:**
 - Default: Save to the current working directory
-- For VITAL Z users: `ceo/x-tweetcraftmation/`
+- For VITAL Z users: `ceo/x-automation/`
 - Ask the user: "brand-voice の保存先はどこにしますか？（デフォルト: `./`）"
 
 ### Step 6: Present draft for user review
@@ -240,7 +240,7 @@ Tell the user:
 > B) 今日はここまで、後でやる
 > C) 最後まで一気にやる（20-30分）
 
-**If user chooses A or C:** Immediately transition to the `x-interview` skill workflow. Execute Step 1-9 of x-interview as if it were the current skill.
+**If user chooses A or C:** Immediately transition to the `x-interview` skill workflow. Skip x-interview Step 1 (prior session check — none exists yet) and start from Step 2 (explain purpose) through Step 9 as if it were the current skill.
 
 **If user chooses B:** Tell the user:
 > OK、いつでも「x-interviewで深めたい」と声をかけてください。

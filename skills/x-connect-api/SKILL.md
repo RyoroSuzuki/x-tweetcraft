@@ -50,7 +50,7 @@ This is purely a personal productivity tool — I only access my own account dat
 The tool is a Claude Code (Anthropic's CLI) plugin for personal use.
 ```
 
-**If the user has a specific pre-drafted application text** (e.g., `ceo/x-tweetcraftmation/X_API_APPLICATION.md`), read it and present that instead.
+**If the user has a specific pre-drafted application text** (e.g., `ceo/x-automation/X_API_APPLICATION.md`), read it and present that instead.
 
 Then tell them:
 > 申請後は承認待ちです（通常1-2営業日、即時承認もあり）。
@@ -138,12 +138,17 @@ Once the user confirms setup is complete:
 
 > 🎉 X API接続完了です！これで以下が使えるようになります:
 >
-> - `x-post` — 下書きを直接投稿
-> - `x-refresh-brand-voice` — 過去投稿100件以上を分析してbrand-voice深化
+> - `x-analyze-posts` — 過去投稿の深い傾向分析
+> - `x-research-trends` — 市場トレンド研究
+> - `x-content-strategist` — 週次戦略レビュー（agent）
 > - `x-draft` — API連携データ込みでより精度の高い下書き生成
 >
+> **計画中（P1実装予定）:**
+> - `x-post` — 下書きを直接投稿
+> - `x-refresh-brand-voice` — 過去投稿100件以上を分析してbrand-voice深化
+>
 > まず試してみるなら:
-> - 「x-refresh-brand-voice」でbrand-voice.mdを深い分析で更新
+> - 「自分の投稿分析して」で `x-analyze-posts` を実行
 > - 「今日のツイート作って」で改善版の下書きを生成
 
 ## Security Notes
@@ -179,7 +184,7 @@ Always remind the user:
 
 ## Integration with existing assets
 
-**If `ceo/x-tweetcraftmation/X_API_APPLICATION.md` exists** (VITAL Z convention):
+**If `ceo/x-automation/X_API_APPLICATION.md` exists** (VITAL Z convention):
 - Read it and use the pre-drafted application text
 - Mention that this saves time
 

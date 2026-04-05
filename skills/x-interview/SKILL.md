@@ -121,8 +121,12 @@ This gives users natural pause points.
 
 ### Step 6: Save session log
 
-At the end of each session (complete or partial), save a log file to:
-`ceo/x-automation/personal-info/interview-logs/YYYY-MM-DD_round{N}-{M}.md`
+At the end of each session (complete or partial), save a log file using the same path resolution order as Step 1:
+1. `ceo/x-automation/personal-info/interview-logs/` (VITAL Z convention)
+2. `./personal-info/interview-logs/` (other users)
+3. `./interview-logs/` (fallback)
+
+File name format: `YYYY-MM-DD_round{N}-{M}.md`
 
 Log format:
 ```markdown
