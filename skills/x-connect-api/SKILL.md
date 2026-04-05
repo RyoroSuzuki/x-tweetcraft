@@ -5,7 +5,7 @@ description: Guide the user through X (Twitter) Developer API application, authe
 
 # x-connect-api
 
-Walk the user through connecting X Developer API to x-auto, from application to working connection. This unlocks x-post (auto-posting), x-refresh-brand-voice (deep analytics), and API-enhanced x-draft.
+Walk the user through connecting X Developer API to x-tweetcraft, from application to working connection. This unlocks x-post (auto-posting), x-refresh-brand-voice (deep analytics), and API-enhanced x-draft.
 
 ## Workflow
 
@@ -50,7 +50,7 @@ This is purely a personal productivity tool — I only access my own account dat
 The tool is a Claude Code (Anthropic's CLI) plugin for personal use.
 ```
 
-**If the user has a specific pre-drafted application text** (e.g., `ceo/x-automation/X_API_APPLICATION.md`), read it and present that instead.
+**If the user has a specific pre-drafted application text** (e.g., `ceo/x-tweetcraftmation/X_API_APPLICATION.md`), read it and present that instead.
 
 Then tell them:
 > 申請後は承認待ちです（通常1-2営業日、即時承認もあり）。
@@ -66,7 +66,7 @@ Guide through App creation:
 >
 > 1. Developer Portal（https://developer.x.com/en/portal/dashboard）にログイン
 > 2. 「Create Project」または「Create App」をクリック
-> 3. App名を入力（例: `x-auto-yourname`）
+> 3. App名を入力（例: `x-tweetcraft-yourname`）
 > 4. 「Keys and tokens」タブで以下を取得:
 >    - API Key
 >    - API Key Secret
@@ -90,7 +90,7 @@ Guide through .env setup:
 > **認証情報の保存:**
 >
 > 1. 以下の場所に `.env` ファイルを作成してください:
->    `~/.x-auto.env`
+>    `~/.x-tweetcraft.env`
 >
 >    （プラグインディレクトリではなくホームに置く。git管理から外すため）
 >
@@ -105,7 +105,7 @@ Guide through .env setup:
 > ```
 >
 > 3. パーミッションを制限:
->    `chmod 600 ~/.x-auto.env`
+>    `chmod 600 ~/.x-tweetcraft.env`
 >
 > ⚠️ **絶対にGitにコミットしない**でください。
 
@@ -115,10 +115,10 @@ Wait for user to confirm.
 
 Guide through connection test:
 
-Check if the x-auto MCP server is configured. Look for `.mcp.json` in the plugin.
+Check if the x-tweetcraft MCP server is configured. Look for `.mcp.json` in the plugin.
 
 If MCP server not yet configured:
-> x-auto MCPサーバーがまだセットアップされていません。
+> x-tweetcraft MCPサーバーがまだセットアップされていません。
 > この機能はP1タスクとして別途実装が必要です。
 > 現時点では、APIキーを保存しておいて、MCPサーバー実装後にテストできます。
 
@@ -179,7 +179,7 @@ Always remind the user:
 
 ## Integration with existing assets
 
-**If `ceo/x-automation/X_API_APPLICATION.md` exists** (VITAL Z convention):
+**If `ceo/x-tweetcraftmation/X_API_APPLICATION.md` exists** (VITAL Z convention):
 - Read it and use the pre-drafted application text
 - Mention that this saves time
 

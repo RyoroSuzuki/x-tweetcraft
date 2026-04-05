@@ -1,6 +1,6 @@
 ---
 name: x-setup
-description: Onboard a user to x-auto by generating their initial brand-voice.md from their X (Twitter) account and sample tweets. Use when the user asks to "set up x-auto", "configure x-auto", "start using x-auto", "create my brand voice", or when no brand-voice.md exists yet. Adapts to X API availability — uses copy-pasted tweets or Playwright MCP if API not connected.
+description: Onboard a user to x-tweetcraft by generating their initial brand-voice.md from their X (Twitter) account and sample tweets. Use when the user asks to "set up x-tweetcraft", "configure x-tweetcraft", "start using x-tweetcraft", "create my brand voice", or when no brand-voice.md exists yet. Adapts to X API availability — uses copy-pasted tweets or Playwright MCP if API not connected.
 ---
 
 # x-setup
@@ -11,7 +11,7 @@ Generate a personalized `brand-voice.md` file that captures the user's X (Twitte
 
 ### Step 0: Check companion skills (recommended)
 
-Before starting setup, briefly check whether useful companion skills are available. These aren't required, but they make x-auto more powerful.
+Before starting setup, briefly check whether useful companion skills are available. These aren't required, but they make x-tweetcraft more powerful.
 
 Look at the available skills list in the current session and identify which are NOT present:
 
@@ -23,7 +23,7 @@ If both are installed, say:
 > ✅ おすすめのCompanion Skillsはすでに揃っています。セットアップを始めます。
 
 If some are missing, tell the user:
-> x-autoと相性のいい **おすすめCompanion Skills** を紹介します。必須ではないですが、入れておくと便利です:
+> x-tweetcraftと相性のいい **おすすめCompanion Skills** を紹介します。必須ではないですが、入れておくと便利です:
 >
 > **[未インストールのみ列挙]**
 > - `document-skills` → PDF/Word/Excel/PowerPointを読み込めるようになります（職歴書・ブランド資料の分析に便利）
@@ -37,7 +37,7 @@ If some are missing, tell the user:
 >
 > または `npx skills add <skill-name>` でも追加できます。
 >
-> 今すぐ入れなくても x-auto のセットアップは進められます。このまま続けますか？
+> 今すぐ入れなくても x-tweetcraft のセットアップは進められます。このまま続けますか？
 
 Wait for user confirmation, then proceed to Step 1.
 
@@ -207,7 +207,7 @@ personal-info/
 
 **Storage location:**
 - Default: Save to the current working directory
-- For VITAL Z users: `ceo/x-automation/`
+- For VITAL Z users: `ceo/x-tweetcraftmation/`
 - Ask the user: "brand-voice の保存先はどこにしますか？（デフォルト: `./`）"
 
 ### Step 6: Present draft for user review

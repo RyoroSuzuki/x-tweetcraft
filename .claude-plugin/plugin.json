@@ -1,5 +1,5 @@
 {
-  "name": "x-auto",
+  "name": "x-tweetcraft",
   "version": "0.1.0",
   "description": "Claude Code plugin for semi-automated X (Twitter) operation. Generates personalized tweet drafts based on brand voice, post history, and market trends.",
   "author": {

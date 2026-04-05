@@ -1,6 +1,6 @@
-# x-auto-plugin
+# x-tweetcraft
 
-Claude Code plugin for semi-automated X (Twitter) operation. Generates personalized tweet drafts based on your brand voice, post history, and market trends.
+Claude Code plugin for crafting personalized X (Twitter) posts. Generates tweet drafts grounded in your own brand voice, then (optionally) automates posting — without losing the voice that makes you *you*.
 
 ## Features
 
@@ -40,17 +40,17 @@ claude plugin install document-skills@anthropic-agent-skills
 claude plugin install superpowers@claude-plugins-official
 ```
 
-### Install x-auto
+### Install x-tweetcraft
 
 **Option A: Local (for development/testing):**
 ```bash
-git clone https://github.com/RyoroSuzuki/x-auto-plugin.git ~/develop/x-auto-plugin
-claude --plugin-dir ~/develop/x-auto-plugin
+git clone https://github.com/RyoroSuzuki/x-tweetcraft.git ~/develop/x-tweetcraft
+claude --plugin-dir ~/develop/x-tweetcraft
 ```
 
 **Option B: Via marketplace (when published):**
 ```bash
-claude plugin install x-auto@<marketplace-name>
+claude plugin install x-tweetcraft@<marketplace-name>
 ```
 
 ## Usage
@@ -116,7 +116,7 @@ This lets you build a rich brand voice without having to publicly share personal
 
 > "Same road, walking alongside." Not a mentor, not a coach — just someone walking the same path who leaves observations for others following.
 
-x-auto is designed to help you show up consistently as yourself, without performance or posturing. The goal isn't virality — it's authentic presence that finds your people.
+x-tweetcraft is designed to help you show up consistently as yourself, without performance or posturing. The goal isn't virality — it's authentic presence that finds your people.
 
 ## Development Status
 

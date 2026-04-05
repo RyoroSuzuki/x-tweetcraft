@@ -31,7 +31,7 @@ Internalize:
 
 ### Step 2: Check X API availability
 
-Look for MCP tools from the x-auto MCP server: `mcp__x_auto__get_my_tweets`, `mcp__x_auto__search_trending`, etc.
+Look for MCP tools from the x-tweetcraft MCP server: `mcp__x_tweetcraft__get_my_tweets`, `mcp__x_tweetcraft__search_trending`, etc.
 
 Track which are available:
 - `get_my_tweets` → Layer 2 (own post analysis)
