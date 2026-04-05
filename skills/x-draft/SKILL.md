@@ -83,11 +83,11 @@ Otherwise proceed with the hypothesis.
 
 ### Step 6: Generate 5-10 drafts
 
-Generate drafts personalized to the user's voice. Each draft should:
+Generate drafts personalized to the user's voice. For each draft:
 - Match the tone and style from brand-voice.md
 - Use one of the user's "よく使う型" (patterns)
 - Avoid all NG items
-- Be within 280 characters (X limit) — **Note: Japanese characters count as 2 each on X, so Japanese tweets should stay within ~140 Japanese characters to be safe**
+- Stay within 280 characters (X limit) — **Japanese characters count as 2 each on X, so keep Japanese tweets within ~140 Japanese characters to be safe**
 
 **Output format for each draft:**
 
@@ -174,14 +174,14 @@ After presenting drafts, when the user responds with their picks/edits/rejection
 
 ## Quality Checklist
 
-Before presenting drafts, self-check:
+Self-check before presenting drafts:
 
-- [ ] Each draft is under 280 characters
-- [ ] All drafts match the user's tone from brand-voice.md
-- [ ] No NG items appear
-- [ ] At least 2 different patterns are used across drafts (not all the same type)
-- [ ] Rationale is concrete, not generic
-- [ ] Drafts feel distinct from each other (don't all say the same thing in slightly different words)
+- [ ] Confirm each draft is under 280 characters
+- [ ] Confirm all drafts match the user's tone from brand-voice.md
+- [ ] Confirm no NG items appear
+- [ ] Confirm at least 3 different patterns appear across 10 drafts (not all the same type)
+- [ ] Confirm rationale is concrete, not generic
+- [ ] Confirm drafts feel distinct from each other (not the same idea in different wording)
 
 ## Heuristics
 

@@ -55,47 +55,25 @@ Wait for confirmation.
 
 ### Step 3: Conduct the interview (one question at a time)
 
-Ask questions **one at a time**. Wait for each answer. Follow up when answers are short or surface-level.
+Read the full question bank from `references/interview-questions.md`.
 
-**Important:** One question per message. Do not batch questions.
+**Critical rules:**
+- Ask ONE question per message
+- Wait for each answer before moving on
+- Follow up when answers are short or surface-level
+- Do NOT batch multiple questions together
+- Respect skips (if user says 次で良い, move on)
+- Honor Round 2 Q5 (一番重い経験) as always-optional with "話さなくてOK" framing
 
-#### Round 1: キャリアの軌跡
-1. これまでの職歴を教えてください。新卒から今まで、業界・職種の変遷を
-2. その中で一番長くいた/思い入れのある会社・プロジェクトは？なぜ？
-3. 途中で大きく方向転換した瞬間はありましたか？何がきっかけで？
-4. 今の事業（会社・プロダクト）を始めた直接的なきっかけは？
-5. その前後で「自分の見方」が変わったことはありますか？
+**6 Rounds:**
+1. キャリアの軌跡 (5問)
+2. 転機・挫折 (5問)
+3. 価値観・信念 (5問)
+4. 届けたい人 (3問)
+5. 自分だからこそ語れる話 (4問)
+6. 発信スタンス (4問)
 
-#### Round 2: 転機・挫折
-1. キャリアで一番しんどかった時期は？何があった？
-2. あの時の自分と同じ状態で苦しんでる人を今見かけたら、何を伝えたいですか？
-3. 失敗したり、撤退した経験は？そこから学んだことは？
-4. 「あの時の選択が全てを変えた」という分岐点はありますか？
-5. （任意）話せる範囲で、個人的に一番重い経験は？
-
-#### Round 3: 価値観・信念
-1. 仕事で絶対に譲れないことは？
-2. 逆に、周りの多くが大事にしてるけど自分はそう思わないことは？
-3. 「これは自分が正しいと思う」という逆張り意見は？
-4. 尊敬する人・ロールモデルは誰？何が尊敬ポイント？
-5. 10年後、どうありたい？
-
-#### Round 4: 届けたい人
-1. 今のフォロワーはどういう人が多そう？
-2. 本当に届けたい「理想のフォロワー像」は？その人のどんな悩みに刺さりたい？
-3. その人に「自分だから言える」と思うメッセージは？
-
-#### Round 5: 自分だからこそ語れる話
-1. 業界的に「あるある」だけど外からは見えにくいこと、知ってますか？
-2. あなたが当たり前だと思ってるけど周りからは驚かれる習慣・思考・スキルは？
-3. 過去の経験で「今なら笑い話にできる」エピソードは？
-4. 持ちネタ・武勇伝・黒歴史、どれか一つ教えて
-
-#### Round 6: 発信スタンス
-1. 自分の投稿で「これは自分らしい」と思うものは？
-2. 逆に「これは盛った/寄せた」と感じたものは？
-3. これから発信で意識していきたいトーンは？
-4. 届けたい人に対してどんな立ち位置でいたい？（先輩/同志/観察者など）
+See `references/interview-questions.md` for the full question text, time estimates per Round, and deeper follow-up prompt patterns.
 
 ### Step 4: Handle pause requests
 

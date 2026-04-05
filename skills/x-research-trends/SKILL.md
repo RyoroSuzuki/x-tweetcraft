@@ -52,31 +52,13 @@ Evaluate what tools are available:
 
 **Browser extension mode:**
 - Give user a prompt to paste into Claude browser extension
-- Prompt template:
-  ```
-  【背景】
-  私は自分のX発信の戦略を立てるために、最近伸びている関連ツイートの型をリサーチしています。
-
-  【抽出してほしい情報】
-  この検索結果ページから、エンゲージメントの高そうなツイート（いいね100以上 or リプライ10以上）を
-  10-20件抽出してください。
-
-  【出力フォーマット】
-  ---
-  ### ツイート1
-  **本文:** [そのまま]
-  **投稿者:** [@ハンドル]
-  **いいね/RP/リプライ:** [数字]
-  ---
-
-  【注意事項】
-  - 本文は要約せず原文そのまま
-  - 広告ツイートは除く
-  ```
+- Read `${CLAUDE_PLUGIN_ROOT}/data/browser-extraction-prompts.md` and present:
+  - **Prompt 2** (トレンド・市場調査) for search result pages
+  - **Prompt 3** (特定アカウントの型リサーチ) when analyzing a role model account
 
 **WebSearch mode:**
-- Search for: "Twitter Xバズったツイート [user's theme] [year/month]"
-- Collect examples from blog posts, まとめサイト
+- Search for: "X バズ [user's theme] 最近" or "Twitter X 伸びた投稿 [テーマ]"
+- Collect examples from blog posts, まとめサイト (note: Twitter references may be stale — prefer X keyword)
 
 ### Step 4: Analyze the samples
 
