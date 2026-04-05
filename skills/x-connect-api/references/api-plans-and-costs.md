@@ -1,12 +1,18 @@
-# X Developer API プラン・コスト詳細（2026年4月時点）
+# X Developer API プラン・コスト詳細（2026年4月時点のスナップショット）
+
+> ⚠️ **このドキュメントは 2026-04-05 時点のスナップショットです。**
+> X社は料金体系を頻繁に変更します。**実際に申請・契約する際は必ず公式ページで最新情報を確認してください。**
+>
+> **最新情報（公式）:**
+> - **メインページ:** https://developer.x.com/#features
+> - **プラン詳細:** https://docs.x.com/x-api/getting-started/pricing
+> - **Developer Console:** https://console.x.com
+>
+> x-connect-api スキルは、ユーザー案内時にこれらのURLから最新情報を取得してから料金説明を行います。このファイルは取得失敗時のバックアップとして参照されます。
 
 > **用語確認:** ここで言う「プラン」は **X Developer API（開発者向けAPI）のプラン** です。
 > X Premium（青バッジ付きの一般ユーザー向けサブスク）とは別物です。
 > x-tweetcraft は Developer API のみ使用するため、X Premium は不要です。
-
-**重要:** X API の料金・制限は頻繁に変わります。申請時は必ず公式サイトで最新情報を確認してください。
-- 公式プランページ: https://docs.x.com/x-api/getting-started/pricing
-- Developer Console: https://console.x.com
 
 ## 🆕 2026年の大きな変化: Pay-Per-Use（従量課金）登場
 
