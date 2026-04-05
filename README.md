@@ -243,10 +243,11 @@ A: Claude Code自体があなたの相談相手です。「x-tweetcraftのこの
 
 ## プラグインに含まれるもの
 
-**8個のスキル:**
+**9個のスキル:**
 - `x-setup` — 初回オンボーディング
 - `x-interview` — 深掘りインタビュー（分割・再開可）
 - `x-draft` — 下書き5〜10案生成
+- `x-improve` — 下書きが浅いときに原因診断＆ルーティング
 - `x-reflect` — 採用/却下から自動学習
 - `x-schedule` — 自動化設定
 - `x-connect-api` — X API接続ガイド（ClaudeがPython環境セットアップも代行）

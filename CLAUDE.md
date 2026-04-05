@@ -84,6 +84,7 @@ x-tweetcraft/
 | `x-setup` | 初回オンボーディング | brand-voice構造を生成 | L1のみ |
 | `x-interview` | brand-voice深化希望 | 6Round対話型インタビュー（再開可） | 不要 |
 | `x-draft` | 「今日のツイート作って」 | 下書き5-10案生成（統合型）、draft-logs/に自動保存 | L1+L2+L3軽量 |
+| `x-improve` | 「精度を上げたい」「下書きが浅い」 | ズレを診断→最適な改善手段へルーティング | 不要 |
 | `x-reflect` | x-draft後のフィードバック時 | 採用/却下/編集から学習してlearnings.mdに蓄積 | 不要 |
 | `x-schedule` | 自動化セットアップ | 朝の下書き準備・週次レビュー等をcron登録 | 設定 |
 | `x-connect-api` | X API接続希望 | Developer Portal申請ガイド | 設定 |
